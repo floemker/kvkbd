@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/theme">
+    <file>compact.xml</file>
     <file>standart.xml</file>
     <file>standart.css</file>
     </qresource>
