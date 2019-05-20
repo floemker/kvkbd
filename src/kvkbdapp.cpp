@@ -59,7 +59,7 @@ using namespace std;
 #include "x11keyboard.h"
 
 
-KvkbdApp::KvkbdApp(bool loginhelper) : KUniqueApplication(), is_login(loginhelper)
+KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString geom) : KUniqueApplication(), is_login(loginhelper)
 // : KApplication()
 {
 
@@ -164,9 +164,10 @@ KvkbdApp::KvkbdApp(bool loginhelper) : KUniqueApplication(), is_login(loginhelpe
     KHelpMenu *helpMenu = new KHelpMenu(widget, KCmdLineArgs::aboutData());
     cmenu->addMenu((QMenu*)helpMenu->menu());
 
-    QString themeName = cfg.readEntry("layout", "standart");
-    themeLoader->loadTheme(themeName);
-    widget->setProperty("layout", themeName);
+    if (theme.isEmpty())
+        theme = cfg.readEntry("layout", "standart");
+    themeLoader->loadTheme(theme);
+    widget->setProperty("layout", theme);
 
 
     QSize defaultSize(DEFAULT_WIDTH,DEFAULT_HEIGHT);
@@ -180,7 +181,12 @@ KvkbdApp::KvkbdApp(bool loginhelper) : KUniqueApplication(), is_login(loginhelpe
     QRect widgetGeometry(bottomRight, defaultSize);
     qDebug() << "widgetGeometry: " << widgetGeometry;
 
-    QRect c_geometry = cfg.readEntry("geometry", widgetGeometry);
+    QRect c_geometry;
+    int w, h, x, y;
+    if (sscanf(geom.toUtf8(), "%dx%d+%d+%d", &w, &h, &x, &y) >= 4)
+        c_geometry = QRect(x, y, w, h);
+    else
+        c_geometry = cfg.readEntry("geometry", widgetGeometry);
     if (!screenGeometry.contains(c_geometry, true)) {
         c_geometry = widgetGeometry;
     }
