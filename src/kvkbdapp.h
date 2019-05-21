@@ -40,7 +40,7 @@ class KvkbdApp : public KUniqueApplication
     Q_OBJECT
 
 public:
-    KvkbdApp(bool loginhelper, QString theme, QString geom);
+    KvkbdApp(bool loginhelper, QString theme, QString geom, QString pad);
     ~KvkbdApp();
 
     

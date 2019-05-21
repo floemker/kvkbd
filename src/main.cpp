@@ -83,19 +83,21 @@ int main(int argc, char **argv)
 
     options.add("loginhelper", ki18n("Stand alone version for use with KDM or XDM.\n"
                                      "See Kvkbd Handbook for information on how to use this option."));
-    options.add("theme <file>", ki18n("Theme to use instead of the one specified in the config file"));
-    options.add("geom <spec>", ki18n("Geometry where the window should open instead of the one specified in the config file"));
+    options.add("theme <file>", ki18n("Theme to use instead of the one specified in the config file."));
+    options.add("geom <spec>", ki18n("Geometry where the window should open instead of the one specified in the config file."));
+    options.add("pad <show>", ki18n("Show / hide the keypad extension on startup."));
     KCmdLineArgs::addCmdLineOptions(options);
 
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
     bool is_login = args->isSet("loginhelper");
     QString theme = args->getOption("theme");
     QString geom = args->getOption("geom");
+    QString pad = args->getOption("pad");
     if (!is_login) {
       findLoginWindow();
     }
 	
-    KvkbdApp app(is_login, theme, geom);
+    KvkbdApp app(is_login, theme, geom, pad);
 
     return app.exec();
     

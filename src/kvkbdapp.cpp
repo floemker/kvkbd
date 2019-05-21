@@ -59,8 +59,8 @@ using namespace std;
 #include "x11keyboard.h"
 
 
-KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString geom) : KUniqueApplication(), is_login(loginhelper)
-// : KApplication()
+KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString geom, QString pad)
+    : KUniqueApplication(), is_login(loginhelper)
 {
 
     signalMapper = new QSignalMapper(this);
@@ -205,8 +205,9 @@ KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString geom) : KUniqueAppli
     
     widget->show();
 
-    
-    bool extensionVisible = cfg.readEntry("extentVisible", QVariant(true)).toBool();
+    bool extensionVisible = pad == "1" || pad == "on" || pad == "true";
+    if (pad.isEmpty())
+        extensionVisible = cfg.readEntry("extentVisible", QVariant(true)).toBool();
     if (!extensionVisible) {
         toggleExtension();
     }
