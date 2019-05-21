@@ -26,9 +26,9 @@
 #include <KCmdLineArgs>
 
 static const char description[] =
-    I18N_NOOP("A virtual keyboard for KDE");
+    I18N_NOOP("A virtual keyboard, modified version based on the original version 0.7.2 for KDE");
 
-static const char version[] = "0.7.2";
+static const char version[] = "0.7.2.modified";
 
 #include <X11/Xlib.h>
 
@@ -76,6 +76,7 @@ int main(int argc, char **argv)
                      KAboutData::License_LGPL_V3, ki18n("(C) 2007-2014 The Kvkbd Developers"));
     about.addAuthor(ki18n("Todor Gyumyushev"), ki18n("Original Author"), "yodor1@gmail.com");
     about.addAuthor(ki18n("Guillaume Martres"), ki18n("KDE4 port"), "smarter@ubuntu.com");
+    about.addAuthor(ki18n("Frank Loemker"), ki18n("Different modifications"), "");
     about.setProgramIconName("preferences-desktop-keyboard");
 
     KCmdLineArgs::init(argc, argv, &about);
