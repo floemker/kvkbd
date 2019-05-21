@@ -62,6 +62,10 @@ VButton[colorGroup="numeric"] {
     border-color: #9faaca;
     background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #9faaca, stop: 1 #9faaca);
 }
+VButton[colorGroup="hide"] {
+    border-color: #ff0000;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #ff0000, stop: 1 #ff0000);
+}
 VButton[action="toggleExtension"] {
   background-color:gray;
   border-color: gray;

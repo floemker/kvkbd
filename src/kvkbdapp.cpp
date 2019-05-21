@@ -392,6 +392,9 @@ void KvkbdApp::buttonAction(const QString &action)
 	  widget->toggleVisibility();
 	}
     }
+    else if (QString::compare(action , "quit")==0) {
+        kapp->quit();
+    }
     else if (QString::compare(action , "toggleExtension")==0) {
 
         toggleExtension();

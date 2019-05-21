@@ -91,7 +91,6 @@ int main(int argc, char **argv)
     bool is_login = args->isSet("loginhelper");
     QString theme = args->getOption("theme");
     QString geom = args->getOption("geom");
-    printf("|%s|   |%s|\n", qPrintable(theme), qPrintable(geom));
     if (!is_login) {
       findLoginWindow();
     }

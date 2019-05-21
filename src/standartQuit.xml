@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
   
-<layout name="compact">
+<layout name="standart">
     <buttonWidth width="25">
       <item name="Esc" width="30"/>
+      <item name="FKey" width="20"/>
       <item name="BackSpace" width="55"/>
       <item name="Tab" width="45"/>
       <item name="BackSlash" width="35"/>
@@ -19,25 +20,48 @@
       <item name="RApp" width="25"/>
       <item name="RCtrl" width="40"/>
       <item name="Insert" width="50"/>
-      <item name="SpecialKeys" width="25" />
     </buttonWidth>
 
     <buttonHeight height="25">
+      <item name="FKey" height="15"/>
       <item name="NumPadPlus" height="50" />
       <item name="NumPadEnter" height="50" />
-      <item name="SpecialKeys" height="15" />
     </buttonHeight>
     
     <spacingHints>
       <item name="Normal" width="5"/>
       <item name="Esc" width="25"/>
+      <item name="FKeys" width="10"/>
       <item name="SpecialKeys" width="25"/>
       <item name="NumPadFullRow" width="100"/>
-      <item name="Space" width="75"/>
+      
     </spacingHints>
 
 
     <part name="main">
+
+      <row height="FKey">
+        <key code="9" width="Esc" height="FKey" label="Esc" colorGroup="other"/>
+        <spacing width="Esc" />
+        <key code="67" width="FKey" height="FKey" label="F1" colorGroup="function"/>
+        <key code="68" width="FKey" height="FKey" label="F2" colorGroup="function"/>
+        <key code="69" width="FKey" height="FKey" label="F3" colorGroup="function"/>
+        <key code="70" width="FKey" height="FKey" label="F4" colorGroup="function"/>
+        <spacing width="FKeys"/>
+        <key code="71" width="FKey" height="FKey" label="F5" colorGroup="function"/>
+        <key code="72" width="FKey" height="FKey" label="F6" colorGroup="function"/>
+        <key code="73" width="FKey" height="FKey" label="F7" colorGroup="function"/>
+        <key code="74" width="FKey" height="FKey" label="F8" colorGroup="function"/>
+        <spacing width="FKeys"/>
+        <key code="75" width="FKey" height="FKey" label="F9" colorGroup="function"/>
+        <key code="76" width="FKey" height="FKey" label="F10" colorGroup="function"/>
+        <key code="77" width="FKey" height="FKey" label="F11" colorGroup="function"/>
+        <key code="78" width="FKey" height="FKey" label="F12" colorGroup="function"/>
+        <spacing width="SpecialKeys"/>
+        <key action="toggleExtension" width="FKey" height="FKey" label="Pad" colorGroup="settings"  tooltip="Toggle Extension"/>
+        <key action="quit" width="FKey" height="FKey" label="Close" colorGroup="hide"  tooltip="Close Keyboard"/>
+      </row>
+
       <row>
         <key code="49"/>
         <key code="10"/>
@@ -73,7 +97,7 @@
       </row>
 
       <row>
-        <key code="66" width="CapsLock" label="Caps" action="caps_lock" colorGroup="function" group_name="capslock" checkable="1"/>
+        <key code="66" width="CapsLock" label="Caps" action="caps_lock" group_name="capslock" checkable="1"/>
         <key code="38"/>
         <key code="39"/>
         <key code="40"/>
@@ -89,7 +113,7 @@
       </row>
 
       <row>
-        <key code="50" width="LeftShift" label="&#x290a;" action="shiftText" colorGroup="function" modifier="1" />
+        <key code="50" width="LeftShift" label="&#x290a;" action="shiftText" modifier="1" />
         <key code="52"/>
         <key code="53"/>
         <key code="54"/>
@@ -100,13 +124,18 @@
         <key code="59"/>
         <key code="60"/>
         <key code="61"/>
-        <key code="62" width="RightShift" label="&#x290a;" action="shiftText" colorGroup="function" modifier="1" />
+        <key code="62" width="RightShift" label="&#x290a;" action="shiftText" modifier="1" />
       </row>
 
       <row>
-        <key action="quit" width="SpecialKeys" height="SpecialKeys" dh="10" label="Close" colorGroup="hide"  tooltip="Quit Keyboard"/>
-        <spacing width="Space" />
-        <key code="65" width="Space" name="" label=" "/>
+        <key code="37" width="LCtrl" label="Ctrl" modifier="1"/>
+        <key code="133" width="LMeta" colorGroup="system" label="Win" modifier="1" />
+        <key code="64" width="LAlt" label="Alt" modifier="1"/>
+        <key code="65" width="Space" name="currentLayout" label=" "/>
+        <key code="108" width="RAlt" label="Alt Gr" modifier="1"/>
+        <key code="134" width="RMeta" label="Win" colorGroup="system" modifier="1"/>
+        <key code="135" width="RApp" label="Prop" colorGroup="application" modifier="1"/>
+        <key code="105" width="RCtrl" label="Ctrl" modifier="1"/>
       </row>
 
       <extension attachment="right">

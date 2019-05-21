@@ -359,6 +359,8 @@ void ThemeLoader::loadKeys(MainWidget *vPart, const QDomNode& wNode)
                     buttonHeight = heightMap.value(heightHint);
                 }
 
+                int dh = attributes.namedItem("dh").toAttr().value().toInt();
+
                 //name
                 QString button_name = attributes.namedItem("name").toAttr().value();
                 if (button_name.length()>0) {
@@ -404,7 +406,7 @@ void ThemeLoader::loadKeys(MainWidget *vPart, const QDomNode& wNode)
                     btn->setChecked(false);
                 }
 
-                btn->move(sx,sy);
+                btn->move(sx, sy+dh);
                 btn->resize(buttonWidth, buttonHeight);
                 btn->storeSize();
 
