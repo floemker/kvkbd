@@ -2,7 +2,7 @@
 #include <QPainter>
 
 #define TIMER_INTERVAL_SHORT 40
-#define TIMER_INTERVAL_LONG  200
+#define TIMER_INTERVAL_LONG  600
 
 int VButton::RepeatShortDelay = TIMER_INTERVAL_SHORT;
 int VButton::RepeatLongDelay = TIMER_INTERVAL_LONG;
