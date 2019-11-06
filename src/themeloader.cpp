@@ -170,7 +170,7 @@ void ThemeLoader::findColorStyles(QMenu *colors, const QString& configSelectedSt
     while (itrActions.hasNext()) {
         QAction *item = itrActions.next();
 	
-	if (item->data().toString() == selectedStyle) {
+	if (item->data().toString().contains(selectedStyle)) {
 	    item->setChecked(true);
 	    selectedAction = item;
 	}
