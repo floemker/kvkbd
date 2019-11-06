@@ -59,7 +59,7 @@ using namespace std;
 #include "x11keyboard.h"
 
 
-KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString geom, QString pad)
+KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString color, QString geom, QString pad)
     : KUniqueApplication(), is_login(loginhelper)
 {
 
@@ -154,9 +154,10 @@ KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString geom, QString pad)
     QFont font = cfg.readEntry("font", widget->font());
     widget->setFont(font);
 
-    QString colorsFilename = cfg.readEntry("colors");
+    if (color.isEmpty())
+        color = cfg.readEntry("colors");
     QMenu *colors = new QMenu(widget);
-    themeLoader->findColorStyles(colors, colorsFilename);
+    themeLoader->findColorStyles(colors, color);
     cmenu->addMenu(colors);
     connect(themeLoader, SIGNAL(colorStyleChanged()), widget, SLOT(repaint()));
     connect(themeLoader, SIGNAL(colorStyleChanged()), dock, SLOT(repaint()));
