@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/theme">
     <file>compact.xml</file>
+    <file>compactNC.xml</file>
     <file>standart.xml</file>
     <file>standartQuit.xml</file>
     <file>standart.css</file>
