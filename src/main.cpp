@@ -87,6 +87,8 @@ int main(int argc, char **argv)
     options.add("color <file>", ki18n("Color style to use instead of the one specified in the config file."));
     options.add("geom <spec>", ki18n("Geometry where the window should open instead of the one specified in the config file."));
     options.add("pad <show>", ki18n("Show / hide the keypad extension on startup."));
+    options.add("lock", ki18n("Lock keypad on the screen."));
+    options.add("dontsave", ki18n("Don't save the configuration on program exit."));
     KCmdLineArgs::addCmdLineOptions(options);
 
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
@@ -95,11 +97,13 @@ int main(int argc, char **argv)
     QString color = args->getOption("color");
     QString geom = args->getOption("geom");
     QString pad = args->getOption("pad");
+    bool lock = args->isSet("lock");
+    bool nosave = args->isSet("dontsave");
     if (!is_login) {
       findLoginWindow();
     }
 	
-    KvkbdApp app(is_login, theme, color, geom, pad);
+    KvkbdApp app(is_login, theme, color, geom, pad, lock, nosave);
 
     return app.exec();
     

@@ -59,7 +59,7 @@ using namespace std;
 #include "x11keyboard.h"
 
 
-KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString color, QString geom, QString pad)
+KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString color, QString geom, QString pad, bool lock, bool nosave)
     : KUniqueApplication(), is_login(loginhelper)
 {
 
@@ -137,11 +137,12 @@ KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString color, QString geom,
     cmenu->addAction(showDockAction);
     connect(showDockAction,SIGNAL(triggered(bool)), dock, SLOT(setVisible(bool)));
 
-    bool isLocked = cfg.readEntry("locked", QVariant(false)).toBool();
+    bool isLocked = lock || cfg.readEntry("locked", QVariant(false)).toBool();
     KToggleAction *lockOnScreenAction = new KToggleAction(i18nc("@action:inmenu", "Lock on Screen"), this);
     lockOnScreenAction->setChecked(isLocked);
     cmenu->addAction(lockOnScreenAction);
     connect(lockOnScreenAction,SIGNAL(triggered(bool)), widget, SLOT(setLocked(bool)));
+    widget->setLocked(isLocked);
 
     bool stickyModKeys = cfg.readEntry("stickyModKeys", QVariant(false)).toBool();
     KToggleAction *stickyModKeysAction = new KToggleAction(i18nc("@action:inmenu", "Sticky Modifier Keys"), this);
@@ -216,8 +217,9 @@ KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString color, QString geom,
     
     
     setQuitOnLastWindowClosed (is_login);
-    
-    connect(this, SIGNAL(aboutToQuit()), this, SLOT(storeConfig()));
+
+    if (!nosave)
+        connect(this, SIGNAL(aboutToQuit()), this, SLOT(storeConfig()));
     emit fontUpdated(widget->font());
 
     if (dockVisible && !is_login) {
