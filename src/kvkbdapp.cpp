@@ -59,7 +59,7 @@ using namespace std;
 #include "x11keyboard.h"
 
 
-KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString color, QString geom, QString pad, bool lock, bool nosave)
+KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString color, QString fontName, QString geom, QString pad, bool lock, bool nosave)
     : KUniqueApplication(), is_login(loginhelper)
 {
 
@@ -151,8 +151,16 @@ KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString color, QString geom,
     connect(stickyModKeysAction,SIGNAL(triggered(bool)), this, SLOT(setStickyModKeys(bool)));
     widget->setProperty("stickyModKeys", stickyModKeys);
     
-    
-    QFont font = cfg.readEntry("font", widget->font());
+    QFont font;
+    if (fontName.isEmpty()) {
+        font = cfg.readEntry("font", widget->font());
+    } else {
+        if (fontName.contains("bold")) {
+            fontName.remove("bold");
+            font.setWeight(75);
+        }
+        font.setFamily(fontName);
+    }
     widget->setFont(font);
 
     if (color.isEmpty())

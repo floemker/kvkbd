@@ -85,6 +85,7 @@ int main(int argc, char **argv)
                                      "See Kvkbd Handbook for information on how to use this option."));
     options.add("theme <file>", ki18n("Theme to use instead of the one specified in the config file."));
     options.add("color <file>", ki18n("Color style to use instead of the one specified in the config file."));
+    options.add("mainfont <fontname>", ki18n("Font to use instead of the one specified in the config file."));
     options.add("geom <spec>", ki18n("Geometry where the window should open instead of the one specified in the config file."));
     options.add("pad <show>", ki18n("Show / hide the keypad extension on startup."));
     options.add("lock", ki18n("Lock keypad on the screen."));
@@ -95,6 +96,7 @@ int main(int argc, char **argv)
     bool is_login = args->isSet("loginhelper");
     QString theme = args->getOption("theme");
     QString color = args->getOption("color");
+    QString font = args->getOption("mainfont");
     QString geom = args->getOption("geom");
     QString pad = args->getOption("pad");
     bool lock = args->isSet("lock");
@@ -103,7 +105,7 @@ int main(int argc, char **argv)
       findLoginWindow();
     }
 	
-    KvkbdApp app(is_login, theme, color, geom, pad, lock, nosave);
+    KvkbdApp app(is_login, theme, color, font, geom, pad, lock, nosave);
 
     return app.exec();
     
