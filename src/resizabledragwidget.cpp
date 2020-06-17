@@ -89,14 +89,14 @@ void ResizableDragWidget::paintEvent(QPaintEvent *ev)
 
     QPainter p(this);
 
-    for (int a = 0; a < 20; a += 4) {
-
-        p.setPen(QColor(170, 170, 170));
-        p.drawLine(width() - 20 + a, height() - 2, width() - 2, height() - 20 + a);
-        p.setPen(QColor(200, 200, 200));
-        p.drawLine(width() - 19 + a, height() - 2, width() - 2, height() - 19 + a);
+    if (!locked) {
+        for (int a = 0; a < 20; a += 4) {
+            p.setPen(QColor(170, 170, 170));
+            p.drawLine(width() - 20 + a, height() - 2, width() - 2, height() - 20 + a);
+            p.setPen(QColor(200, 200, 200));
+            p.drawLine(width() - 19 + a, height() - 2, width() - 2, height() - 19 + a);
+        }
     }
-
 }
 
 

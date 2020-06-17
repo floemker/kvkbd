@@ -47,6 +47,7 @@ void DragWidget::blurBackground(bool blurEnabled)
 void DragWidget::setLocked(bool locked)
 {
   this->locked = locked;
+  update();
 }
 bool DragWidget::isLocked()
 {
