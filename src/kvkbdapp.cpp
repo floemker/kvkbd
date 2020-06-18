@@ -156,10 +156,11 @@ KvkbdApp::KvkbdApp(bool loginhelper, QString theme, QString color, QString fontN
         font = cfg.readEntry("font", widget->font());
     } else {
         if (fontName.contains("bold")) {
-            fontName.remove("bold");
+            fontName.remove("bold").trimmed();
             font.setWeight(75);
         }
-        font.setFamily(fontName);
+        if (!fontName.isEmpty())
+            font.setFamily(fontName);
     }
     widget->setFont(font);
 
