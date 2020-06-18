@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  
+<layout name="compact2">
+    <buttonWidth width="25">
+      <item name="Esc" width="30"/>
+      <item name="BackSpace" width="40"/>
+      <item name="Tab" width="45"/>
+      <item name="BackSlash" width="25"/>
+      <item name="CapsLock" width="50"/>
+      <item name="Enter" width="55"/>
+      <item name="LeftShift" width="40"/>
+      <item name="RightShift" width="40"/>
+      <item name="LCtrl" width="35"/>
+      <item name="LMeta" width="25"/>
+      <item name="LAlt" width="30"/>
+      <item name="Space" width="170"/>
+      <item name="RAlt" width="30"/>
+      <item name="RMeta" width="25"/>
+      <item name="RApp" width="25"/>
+      <item name="RCtrl" width="40"/>
+      <item name="Insert" width="50"/>
+      <item name="SpecialKeys" width="25" />
+    </buttonWidth>
+
+    <buttonHeight height="25">
+      <item name="NumPadPlus" height="50" />
+      <item name="NumPadEnter" height="50" />
+      <item name="SpecialKeys" height="15" />
+    </buttonHeight>
+    
+    <spacingHints>
+      <item name="Normal" width="5"/>
+      <item name="Esc" width="25"/>
+      <item name="SpecialKeys" width="25"/>
+      <item name="NumPadFullRow" width="100"/>
+      <item name="Space" width="75"/>
+    </spacingHints>
+
+
+    <part name="main">
+      <row>
+        <key code="49" colorGroup="other"/>
+        <key code="10"/>
+        <key code="11"/>
+        <key code="12"/>
+        <key code="13"/>
+        <key code="14"/>
+        <key code="15"/>
+        <key code="16"/>
+        <key code="17"/>
+        <key code="18"/>
+        <key code="19"/>
+        <key code="20" colorGroup="other"/>
+        <key code="21" colorGroup="other"/>
+      </row>
+
+      <row>
+        <spacing width="Normal" />
+        <key code="24"/>
+        <key code="25"/>
+        <key code="26"/>
+        <key code="27"/>
+        <key code="28"/>
+        <key code="29"/>
+        <key code="30"/>
+        <key code="31"/>
+        <key code="32"/>
+        <key code="33"/>
+        <key code="34"/>
+        <key code="35" colorGroup="other"/>
+      </row>
+
+      <row>
+        <spacing width="Normal" />
+        <spacing width="Normal" />
+        <key code="38"/>
+        <key code="39"/>
+        <key code="40"/>
+        <key code="41"/>
+        <key code="42"/>
+        <key code="43"/>
+        <key code="44"/>
+        <key code="45"/>
+        <key code="46"/>
+        <key code="47"/>
+        <key code="48"/>
+        <key code="51" colorGroup="other" width="BackSlash"/>
+      </row>
+
+      <row>
+        <key code="50" width="LeftShift" label="&#x290a;" action="shiftText" colorGroup="function" modifier="1" />
+        <key code="52"/>
+        <key code="53"/>
+        <key code="54"/>
+        <key code="55"/>
+        <key code="56"/>
+        <key code="57"/>
+        <key code="58"/>
+        <key code="59" colorGroup="other"/>
+        <key code="60" colorGroup="other"/>
+        <key code="61" colorGroup="other"/>
+        <key code="22" width="BackSpace" colorGroup="function" label="&#x290c;"/>
+      </row>
+
+      <row>
+        <spacing width="Space" />
+        <key code="65" width="Space" name="" label=" "/>
+      </row>
+
+      <extension attachment="right">
+	<row height="FKey">
+	  <spacing width="NumPadFullRow" height="FKey" />
+	</row>
+	
+	<row>
+	  <key code="77" label="Num"  action="group_toggle" group_name="numlock" checkable="1" colorGroup="numeric"/>
+	  <key code="106" colorGroup="numeric" label="/" />
+	  <key code="63" colorGroup="numeric" label="*" />
+	  <key code="82" colorGroup="numeric" label="-" />
+	</row>
+	
+	<row>
+	  <key code="79" colorGroup="numeric" label="Home" group_toggle="numlock" group_label="7" />
+	  <key code="80" colorGroup="numeric" label="▲" group_toggle="numlock"  group_label="8" />
+	  <key code="81" colorGroup="numeric" label="PgUp" group_toggle="numlock" group_label="9" />
+	  <key code="86" label="+" height="NumPadPlus" colorGroup="numeric"/>
+	</row>
+	
+	<row>
+	  <key code="83" colorGroup="numeric" label="◄" group_toggle="numlock" group_label="4"/>
+	  <key code="84" colorGroup="numeric" label=" " group_toggle="numlock" group_label="5"/>
+	  <key code="85" colorGroup="numeric" label="►" group_toggle="numlock" group_label="6"/>
+	</row>
+	
+	<row>
+	  <key code="87" colorGroup="numeric" label="End" group_toggle="numlock" group_label="1"/>
+	  <key code="88" colorGroup="numeric" label="▼" group_toggle="numlock" group_label="2"/>
+	  <key code="89" colorGroup="numeric" label="PgDn" group_toggle="numlock" group_label="3"/>
+	  <key code="104" label="&#x2936;" height="NumPadEnter" colorGroup="enter" />
+	</row>
+	
+	<row>
+	  <key code="90" width="Insert" label="Ins" colorGroup="numeric" group_toggle="numlock" group_label="0"/>
+	  <key code="91" label="Del"  colorGroup="numeric" group_toggle="numlock" group_label="."/>
+
+	</row>
+	
+      </extension>
+      
+    </part>
+
+</layout>
