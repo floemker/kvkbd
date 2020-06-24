@@ -30,8 +30,8 @@ VButton:hover {
 }
 
 VButton[colorGroup="normal"] {
-    border-color: #97c5d5;
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #97c5d5, stop: 1 #c7f5f5);
+    border-color: #87b5d5;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #87b5d5, stop: 1 #b7e5f5);
 
 }
 VButton[colorGroup="system"] {
