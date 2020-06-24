@@ -17,7 +17,7 @@ class MainWidget : public QWidget
 public:
     explicit MainWidget(QWidget *parent = 0);
     void setBaseSize(int w, int h);
-
+    void setFontStretch(float s) {fontStretch = s;}
 signals:
 
 public slots:
@@ -29,7 +29,7 @@ public slots:
 protected:
     virtual void resizeEvent(QResizeEvent *ev);
     QSize bsize;
-    
+    float fontStretch;
 };
 
 #endif // MAINWIDGET_H

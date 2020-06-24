@@ -251,6 +251,8 @@ int ThemeLoader::loadLayout(const QString& themeName, const QString& path)
         //cout  << "spacing[" << qPrintable(hintName) << "]=>"<< width << endl;
     }
 
+    wList =  docElem.elementsByTagName("font");
+    float font = wList.at(0).attributes().namedItem("stretch").toAttr().value().toFloat();
 
     wList = docElem.elementsByTagName("part");
     wNode = wList.at(0);
@@ -259,6 +261,7 @@ int ThemeLoader::loadLayout(const QString& themeName, const QString& path)
     QString partName = wNode.attributes().namedItem("name").toAttr().value();
 
     MainWidget *part = new MainWidget((QWidget*)parent());
+    part->setFontStretch(font);
     part->setProperty("part", "main");
 
 
@@ -271,6 +274,7 @@ int ThemeLoader::loadLayout(const QString& themeName, const QString& path)
         QDomNode wNode = wList.at(a);
         if (wNode.toElement().tagName() == "extension") {
             MainWidget *widget1 = new MainWidget((QWidget*)parent());
+            widget1->setFontStretch(font);
             widget1->setProperty("part", "extension");
             loadKeys(widget1, wNode);
             break;
@@ -382,6 +386,8 @@ void ThemeLoader::loadKeys(MainWidget *vPart, const QDomNode& wNode)
                 applyProperty(btn, "colorGroup", &attributes, "normal");
 
 		applyProperty(btn, "tooltip", &attributes);
+
+		applyProperty(btn, "shift", &attributes);
 
                 QString modifier = attributes.namedItem("modifier").toAttr().value();
                 if (modifier.toInt()>0) {

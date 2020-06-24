@@ -336,7 +336,7 @@ void KvkbdApp::buttonLoaded(VButton *btn)
         modKeys.append(btn);
     }
     else {
-        QObject::connect(btn, SIGNAL(keyClick(unsigned int)), xkbd, SLOT(processKeyPress(unsigned int)) );
+        QObject::connect(btn, SIGNAL(keyClick(unsigned int, bool)), xkbd, SLOT(processKeyPress(unsigned int, bool)) );
     }
     QString bAction = btn->property("action").toString();
 

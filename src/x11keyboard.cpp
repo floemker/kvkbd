@@ -105,15 +105,15 @@ void X11Keyboard::constructLayouts()
 
 }
 
-void X11Keyboard::processKeyPress(unsigned int keyCode)
+void X11Keyboard::processKeyPress(unsigned int keyCode, bool shift)
 {
     groupTimer->stop();
-    sendKey(keyCode);
+    sendKey(keyCode, shift);
     emit keyProcessComplete(keyCode);
     groupTimer->start();
 
 }
-void X11Keyboard::sendKey(unsigned int keycode)
+void X11Keyboard::sendKey(unsigned int keycode, bool shift)
 {
     Window currentFocus;
     int revertTo;
@@ -125,9 +125,13 @@ void X11Keyboard::sendKey(unsigned int keycode)
     while (itr.hasNext()) {
         VButton *mod = itr.next();
         if (mod->isChecked()) {
-            XTestFakeKeyEvent(display, mod->getKeyCode(), true, 2);
+            int code = mod->getKeyCode();
+            if (!shift || code != 50)
+                XTestFakeKeyEvent(display, mod->getKeyCode(), true, 2);
         }
     }
+    if (shift)
+        XTestFakeKeyEvent(display, 50, true, 2);
 
     XTestFakeKeyEvent(display, keycode, true, 2);
     XTestFakeKeyEvent(display, keycode, false, 2);
@@ -136,10 +140,13 @@ void X11Keyboard::sendKey(unsigned int keycode)
     while (itr.hasNext()) {
         VButton *mod = itr.next();
         if (mod->isChecked()) {
-            XTestFakeKeyEvent(display, mod->getKeyCode(), false, 2);
+            int code = mod->getKeyCode();
+            if (!shift || code != 50)
+                XTestFakeKeyEvent(display, mod->getKeyCode(), false, 2);
         }
     }
-
+    if (shift)
+        XTestFakeKeyEvent(display, 50, false, 2);
 
     XFlush(display);
 

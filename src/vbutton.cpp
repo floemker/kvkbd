@@ -131,7 +131,7 @@ void VButton::updateText()
 
 void VButton::sendKey()
 {
-    emit keyClick(this->keyCode);
+    emit keyClick(this->keyCode, property("shift").toBool());
 }
 
 void VButton::mousePressEvent(QMouseEvent *e)

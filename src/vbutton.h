@@ -36,7 +36,7 @@ public:
     void setShift(bool mode);
 
 signals:
-    void keyClick(unsigned int);
+    void keyClick(unsigned int, bool);
     void buttonAction(const QString& action);
 
 public slots:

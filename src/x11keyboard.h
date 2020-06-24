@@ -43,7 +43,7 @@ public:
     void textForKeyCode(unsigned int keyCode, ButtonText& text);
 
 public slots:
-    virtual void processKeyPress(unsigned int);
+    virtual void processKeyPress(unsigned int, bool shift);
     virtual void queryModState();
     virtual void constructLayouts();
     virtual void layoutChanged();
@@ -51,7 +51,7 @@ public slots:
 
 protected:
 
-    void sendKey(unsigned int keycode);
+    void sendKey(unsigned int keycode, bool shift);
 
     QStringList layouts;
     int layout_index;

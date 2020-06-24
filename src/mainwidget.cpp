@@ -8,7 +8,7 @@
 
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
-
+    fontStretch = 1;
 }
 
 void MainWidget::setBaseSize(int w, int h)
@@ -78,7 +78,7 @@ void MainWidget::textSwitch(bool setShift)
     }
 
 }
-void MainWidget::updateLayout(int index, QString layout_name)
+void MainWidget::updateLayout(int /*index*/, QString layout_name)
 {
     QObjectList buttons = this->children();
 
@@ -132,7 +132,7 @@ void MainWidget::updateFont(const QFont& widgetFont)
 
     int fontSize = widgetFont.pointSize();
     if ( parentWidget()->property("autoresfont").toBool() ) {
-        fontSize = (8.0 / 500.0) * this->parentWidget()->size().width();
+        fontSize = (8.0*fontStretch / 500.0) * this->parentWidget()->size().width();
     }
     QString buttonStyle = QString("VButton { font-family:'%1'; font-size: %2px; font-weight:%3; font-style: %4; }").arg(widgetFont.family()).arg(fontSize).arg(widgetFont.bold() ? "bold" : "normal").arg(widgetFont.italic() ? "italic" : "normal");
     this->setStyleSheet(buttonStyle);
