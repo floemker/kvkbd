@@ -35,7 +35,7 @@
       <item name="Esc" width="25"/>
       <item name="SpecialKeys" width="25"/>
       <item name="NumPadFullRow" width="100"/>
-      <item name="Space" width="75"/>
+      <item name="Space" width="55"/>
     </spacingHints>
 
 
